@@ -1,6 +1,6 @@
 /*!
  * Number-To-Words util
- * @version v1.0.2
+ * @version v1.0.3
  * @link https://github.com/prajinpults/number-to-words-en-ml
  * @author Prajin (https://github.com/prajinpults)
  * @contributors Martin Eneqvist (https://github.com/marlun78),Aleksey Pilyugin (https://github.com/pilyugin),Jeremiah Hall (https://github.com/jeremiahrhall),Adriano Melo (https://github.com/adrianomelo),dmrzn (https://github.com/dmrzn),HedCET (https://github.com/HedCET)
@@ -265,7 +265,7 @@ function toWordsMl(number) {
         .replace(/[^0-9]+/g, "")
         .replace(/^0+([1-9][0-9]*|0$)/, "$1");
 
-    if (!formatted) return new Error("invalid number format");
+    if (!formatted) return "";
 
     let slice = formatted;
     let words = "";

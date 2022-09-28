@@ -23,6 +23,7 @@ describe('toWords', function () {
         { input: 1.9, expect: 'ഒന്നാം' },
         { input: 100, expect: 'നൂറാം' },
         { input: 10000, expect: 'പതിനായിരം' },
+        { input: null, expect: '' },
     ];
 
     function addTest(test) {

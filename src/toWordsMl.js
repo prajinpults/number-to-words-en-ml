@@ -7,7 +7,7 @@ function toWordsMl(number) {
         .replace(/[^0-9]+/g, "")
         .replace(/^0+([1-9][0-9]*|0$)/, "$1");
 
-    if (!formatted) return new Error("invalid number format");
+    if (!formatted) return "";
 
     let slice = formatted;
     let words = "";
