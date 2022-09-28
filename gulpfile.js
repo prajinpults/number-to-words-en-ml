@@ -26,6 +26,10 @@ function bundleTask() {
         './src/makeOrdinal.js',
         './src/toOrdinal.js',
         './src/toWords.js',
+        './src/lessThan100.js',
+        './src/lessThan1000.js',
+        './src/lessThan100000.js',
+        './src/lessThan10000000.js',
         './src/toWordsOrdinal.js',
         './src/toWordsOrdinalMl.js',
         './src/toWordsMl.js'
