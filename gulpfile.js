@@ -26,7 +26,9 @@ function bundleTask() {
         './src/makeOrdinal.js',
         './src/toOrdinal.js',
         './src/toWords.js',
-        './src/toWordsOrdinal.js'
+        './src/toWordsOrdinal.js',
+        './src/toWordsOrdinalMl.js',
+        './src/toWordsMl.js'
     ];
 
     return gulp.src(files)
