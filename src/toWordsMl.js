@@ -3,7 +3,7 @@
 var lessThan10000000 = require('./lessThan10000000');
 
 function toWordsMl(number) {
-    const formatted = `${number}`
+    const formatted = `${parseInt(number, 10)}`
         .replace(/[^0-9]+/g, "")
         .replace(/^0+([1-9][0-9]*|0$)/, "$1");
 

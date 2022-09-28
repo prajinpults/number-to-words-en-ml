@@ -71,15 +71,18 @@ function lessThan100000(number = "") {
     if (mapping[part1000]) lessThan100000 = mapping[part1000];
     else {
         lessThan100000 = `${lessThan100(parts[1])}${mapping[1000]}`;
-
+        console.log(parts[1].substr(-1))
         switch (parts[1].substr(-1)) {
-            case "0":
+            case "0":{
+                lessThan100000 = lessThan100000.replace(/റ്ആ/, "റാ");
+                lessThan100000 = lessThan100000.replace(/ത്ആ|ത്ത്ആ/, "തിനാ");
+                break;
+            }
             case "6": {
                 lessThan100000 = lessThan100000.replace(/റ്ആ/, "റാ");
                 break;
             }
 
-            case "0":
             case "9": {
                 lessThan100000 = lessThan100000.replace(/ത്ആ|ത്ത്ആ/, "തിനാ");
                 break;
