@@ -2,12 +2,16 @@
 
 var lessThan10000000 = require('./lessThan10000000');
 
-function toWordsMl(number) {
+function toWordsMl(number,treatOneAsSpacialCase=true) {
     const formatted = `${parseInt(number, 10)}`
         .replace(/[^0-9]+/g, "")
         .replace(/^0+([1-9][0-9]*|0$)/, "$1");
 
     if (!formatted) return "";
+
+    if(formatted==1 && treatOneAsSpacialCase){
+        return "ഒരു"
+    }
 
     let slice = formatted;
     let words = "";

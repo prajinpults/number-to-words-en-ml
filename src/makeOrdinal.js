@@ -3,7 +3,7 @@
 var ENDS_WITH_DOUBLE_ZERO_PATTERN = /(hundred|thousand|(m|b|tr|quadr)illion)$/;
 var ENDS_WITH_TEEN_PATTERN = /teen$/;
 var ENDS_WITH_Y_PATTERN = /y$/;
-var ENDS_WITH_ZERO_THROUGH_TWELVE_PATTERN = /(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)$/;
+var ENDS_WITH_ZERO_THROUGH_TWELVE_PATTERN = /(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|Zero|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve)$/;
 var ordinalLessThanThirteen = {
     zero: 'zeroth',
     one: 'first',
@@ -17,7 +17,20 @@ var ordinalLessThanThirteen = {
     nine: 'ninth',
     ten: 'tenth',
     eleven: 'eleventh',
-    twelve: 'twelfth'
+    twelve: 'twelfth',
+    Zero: 'Zeroth',
+    One: 'First',
+    Two: 'Second',
+    Three: 'Third',
+    Four: 'Fourth',
+    Five: 'Fifth',
+    Six: 'Sixth',
+    Seven: 'Seventh',
+    Eight: 'Eighth',
+    Nine: 'Ninth',
+    Ten: 'Tenth',
+    Eleven: 'Eleventh',
+    Twelve: 'Twelfth'
 };
 
 /**

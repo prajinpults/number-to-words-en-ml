@@ -1,6 +1,6 @@
 /*!
  * Number-To-Words util
- * @version v1.0.4
+ * @version v1.1.1
  * @link https://github.com/prajinpults/number-to-words-en-ml
  * @author Prajin (https://github.com/prajinpults)
  * @contributors Martin Eneqvist (https://github.com/marlun78),Aleksey Pilyugin (https://github.com/pilyugin),Jeremiah Hall (https://github.com/jeremiahrhall),Adriano Melo (https://github.com/adrianomelo),dmrzn (https://github.com/dmrzn),HedCET (https://github.com/HedCET)
@@ -39,7 +39,7 @@ function isSafeNumber(value) {
 var ENDS_WITH_DOUBLE_ZERO_PATTERN = /(hundred|thousand|(m|b|tr|quadr)illion)$/;
 var ENDS_WITH_TEEN_PATTERN = /teen$/;
 var ENDS_WITH_Y_PATTERN = /y$/;
-var ENDS_WITH_ZERO_THROUGH_TWELVE_PATTERN = /(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)$/;
+var ENDS_WITH_ZERO_THROUGH_TWELVE_PATTERN = /(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|Zero|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve)$/;
 var ordinalLessThanThirteen = {
     zero: 'zeroth',
     one: 'first',
@@ -53,7 +53,20 @@ var ordinalLessThanThirteen = {
     nine: 'ninth',
     ten: 'tenth',
     eleven: 'eleventh',
-    twelve: 'twelfth'
+    twelve: 'twelfth',
+    Zero: 'Zeroth',
+    One: 'First',
+    Two: 'Second',
+    Three: 'Third',
+    Four: 'Fourth',
+    Five: 'Fifth',
+    Six: 'Sixth',
+    Seven: 'Seventh',
+    Eight: 'Eighth',
+    Nine: 'Ninth',
+    Ten: 'Tenth',
+    Eleven: 'Eleventh',
+    Twelve: 'Twelfth'
 };
 
 /**
@@ -139,15 +152,17 @@ var TENTHS_LESS_THAN_HUNDRED = [
     'zero', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
 ];
 
+var isAppendSlash = false
 /**
  * Converts an integer into words.
  * If number is decimal, the decimals will be removed.
- * @example toWords(12) => 'twelve'
+ * @example toWords(12) => 'Twelve'
  * @param {number|string} number
- * @param {boolean} [asOrdinal] - Deprecated, use toWordsOrdinal() instead!
+ * @param {boolean} [appendSlash] - Append "-" if required defulat is  " "
  * @returns {string}
  */
-function toWords(number, asOrdinal) {
+function toWords(number,appendSlash) {
+    isAppendSlash = appendSlash
     var words;
     var num = parseInt(number, 10);
 
@@ -162,10 +177,10 @@ function toWords(number, asOrdinal) {
         );
     }
     words = generateWords(num);
-    return asOrdinal ? makeOrdinal(words) : words;
+    return capitalizeFirstLetter(words);
 }
 
-function generateWords(number) {
+function generateWords(number,appendRemainderWith=" ") {
     var remainder, word,
         words = arguments[1];
 
@@ -190,9 +205,9 @@ function generateWords(number) {
     } else if (number < ONE_HUNDRED) {
         remainder = number % TEN;
         word = TENTHS_LESS_THAN_HUNDRED[Math.floor(number / TEN)];
-        // In case of remainder, we need to handle it here to be able to add the “-”
+        // In case of remainder, we need to handle it here to be able to add the “-” or " " appendRemainderWith
         if (remainder) {
-            word += '-' + LESS_THAN_TWENTY[remainder];
+            word += (isAppendSlash?'-':' ')+ LESS_THAN_TWENTY[remainder];
             remainder = 0;
         }
 
@@ -226,6 +241,9 @@ function generateWords(number) {
     return generateWords(remainder, words);
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // ========== file: \src\lessThan100.js ==========
 
@@ -255,17 +273,17 @@ function lessThan100(number = "") {
         6: "ആറ്",
         7: "ഏഴ്",
         8: "എട്ട്",
-        9: "ഒമ്പത്",
+        9: "ഒൻപത്",
 
         10: "പത്ത്",
         11: "പതിനൊന്ന്",
         12: "പന്ത്രണ്ട്",
-        19: "പത്തൊമ്പത്",
+        19: "പത്തൊൻപത്",
 
         20: "ഇരുപത്",
         30: "മുപ്പത്",
         40: "നാല്പത്",
-        50: "അമ്പത്",
+        50: "അൻപത്",
         60: "അറുപത്",
         70: "എഴുപത്",
         80: "എൺപത്",
@@ -310,7 +328,7 @@ function lessThan100(number = "") {
             switch (part1) {
                 case "1":
                 case "9":
-                    return word.replace(/ത്ഒ/, "ത്തൊ");
+                    return word.replace(/ത്ഒ/, "ത്തിയൊ");
 
                 case "2":
                     return word.replace(/ത്ര/, "ത്തിര");
@@ -322,7 +340,7 @@ function lessThan100(number = "") {
                     return word.replace(/ത്ന/, "ത്തിന");
 
                 case "5":
-                    return word.replace(/ത്അ/, "ത്ത");
+                    return word.replace(/ത്അ/, "ത്തിയ");
 
                 case "6":
                     return word.replace(/ത്ആ/, "ത്തിയാ");
@@ -606,7 +624,7 @@ function toWordsOrdinal(number) {
  * @returns {string}
  */
 function toWordsOrdinalMl(number) {
-    var words = toWordsMl(number);
+    var words = toWordsMl(number, false);
     return words.replace(/്$/,'ാം');
 }
 
@@ -614,12 +632,16 @@ function toWordsOrdinalMl(number) {
 // ========== file: \src\toWordsMl.js ==========
 
 
-function toWordsMl(number) {
+function toWordsMl(number,treatOneAsSpacialCase=true) {
     const formatted = `${parseInt(number, 10)}`
         .replace(/[^0-9]+/g, "")
         .replace(/^0+([1-9][0-9]*|0$)/, "$1");
 
     if (!formatted) return "";
+
+    if(formatted==1 && treatOneAsSpacialCase){
+        return "ഒരു"
+    }
 
     let slice = formatted;
     let words = "";

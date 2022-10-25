@@ -25,17 +25,17 @@ function lessThan100(number = "") {
         6: "ആറ്",
         7: "ഏഴ്",
         8: "എട്ട്",
-        9: "ഒമ്പത്",
+        9: "ഒൻപത്",
 
         10: "പത്ത്",
         11: "പതിനൊന്ന്",
         12: "പന്ത്രണ്ട്",
-        19: "പത്തൊമ്പത്",
+        19: "പത്തൊൻപത്",
 
         20: "ഇരുപത്",
         30: "മുപ്പത്",
         40: "നാല്പത്",
-        50: "അമ്പത്",
+        50: "അൻപത്",
         60: "അറുപത്",
         70: "എഴുപത്",
         80: "എൺപത്",
@@ -80,7 +80,7 @@ function lessThan100(number = "") {
             switch (part1) {
                 case "1":
                 case "9":
-                    return word.replace(/ത്ഒ/, "ത്തൊ");
+                    return word.replace(/ത്ഒ/, "ത്തിയൊ");
 
                 case "2":
                     return word.replace(/ത്ര/, "ത്തിര");
@@ -92,7 +92,7 @@ function lessThan100(number = "") {
                     return word.replace(/ത്ന/, "ത്തിന");
 
                 case "5":
-                    return word.replace(/ത്അ/, "ത്ത");
+                    return word.replace(/ത്അ/, "ത്തിയ");
 
                 case "6":
                     return word.replace(/ത്ആ/, "ത്തിയാ");

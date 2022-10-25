@@ -9,7 +9,7 @@ var toWordsMl = require('./toWordsMl');
  * @returns {string}
  */
 function toWordsOrdinalMl(number) {
-    var words = toWordsMl(number);
+    var words = toWordsMl(number, false);
     return words.replace(/്$/,'ാം');
 }
 
