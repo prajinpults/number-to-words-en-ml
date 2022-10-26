@@ -38,6 +38,14 @@ describe('toOrdinal', function () {
 
     tests.forEach(addTest);
 
+    it('should, if passed 1,<s>,</s>, return 1<s>st</s>', function () {
+        expect(toOrdinal(1,'<s>','</s>')).toEqual('1<s>st</s>');
+    });
+
+    it('should, if passed 1,", return 1"st', function () {
+        expect(toOrdinal(1,'"')).toEqual('1"st');
+    });
+
     it('should throw a RangeError if input is greater or lesser than MAX_SAFE_INTEGER', function() {
         var unsafe = MAX_SAFE_INTEGER + 100;
 
