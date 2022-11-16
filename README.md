@@ -8,7 +8,7 @@ ordinal numbers. updated with support for mlayalam and english with reference of
 
 
 ### Install
-`npm install number-to-words-en-ml-en-ml`
+`npm install number-to-words-en-ml`
 
 
 ### API
