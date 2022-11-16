@@ -1,6 +1,6 @@
 /*!
  * Number-To-Words util
- * @version v1.1.2
+ * @version v1.1.3
  * @link https://github.com/prajinpults/number-to-words-en-ml
  * @author Prajin (https://github.com/prajinpults)
  * @contributors Martin Eneqvist (https://github.com/marlun78),Aleksey Pilyugin (https://github.com/pilyugin),Jeremiah Hall (https://github.com/jeremiahrhall),Adriano Melo (https://github.com/adrianomelo),dmrzn (https://github.com/dmrzn),HedCET (https://github.com/HedCET)
